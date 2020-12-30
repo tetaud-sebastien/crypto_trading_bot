@@ -12,9 +12,9 @@ import re
 
 
 # Parameters
-api_key_binance = config.api_key_binance
-api_secret_binance = config.api_secret_binance
-client = Client(api_key_binance, api_secret_binance)
+binance_api_source_key = config.BINANCE_API_SOURCE_KEY
+binance_api_sources_secret = config.BINANCE_API_SOURCE_SECRET
+client = Client(binance_api_source_key, binance_api_sources_secret)
 path = config.PATH
 list_KLINE = config.KLINE
 start=config.START
