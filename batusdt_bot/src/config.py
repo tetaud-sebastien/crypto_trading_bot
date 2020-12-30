@@ -1,0 +1,14 @@
+#!interpreter
+# -*- coding: utf-8 -*-
+# Configuration file 
+import os 
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+BINANCE_API_SOURCE_KEY = os.getenv("BINANCE_API_SOURCE_KEY")
+BINANCE_API_SOURCE_SECRET = os.getenv("BINANCE_API_SOURCE_SECRET")
+SYMBOL = "BATUSDT"
+KLINE = '6h'
+AMOUNT = 200
+STOPLOSS = 0.08
+TAKEPROFIT = 0.03
+

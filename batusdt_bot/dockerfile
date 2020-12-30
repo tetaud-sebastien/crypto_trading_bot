@@ -1,0 +1,10 @@
+FROM python:latest
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+CMD ["sh", "src/bot.sh"]
+
+ENTRYPOINT ["sh", "src/bot.sh"]
+
