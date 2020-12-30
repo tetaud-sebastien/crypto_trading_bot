@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime, timedelta
 from binance.client import Client
-from analytic_function import get_stock
+from analytic_function import get_stock_bot
 import pandas_bokeh
 import analytic_function
 import warnings
@@ -127,13 +127,13 @@ def strategy_outliers_sl_tp_cap_cumul(data,df_outliers, stopLoss, takeProfit):
 
 # ------ FunctionS ------ #
 
-api_key_binance = config.api_key_binance
-api_secret_binance = config.api_secret_binance
-client = Client(api_key_binance, api_secret_binance)
+binance_api_source_key = config.BINANCE_API_SOURCE_KEY
+binance_api_sources_secret = config.BINANCE_API_SOURCE_SECRET
+client = Client(binance_api_source_key, binance_api_sources_secret)
 amount = config.AMOUNT
 fees = config.FEES
 path_result = config.PATH_RESULT
-kline = '1h'
+kline = '1m'
 start = config.START
 end = config.END
 symbol = "BTCUSDT"
@@ -141,10 +141,6 @@ symbol = "BTCUSDT"
 if __name__ == "__main__":
 
     start_time = datetime.now()
-
-    api_key_binance = config.api_key_binance
-    api_secret_binance = config.api_secret_binance
-    client = Client(api_key_binance, api_secret_binance)
 
     amount = config.AMOUNT
     fees = config.FEES
@@ -163,8 +159,7 @@ if __name__ == "__main__":
     
     
     #Exatract data 
-    df = get_stock(symbol = symbol, interval=kline, start=start,end=end, time_ref='Close_time')
-    print(df)
+    df = get_stock_bot(symbol, kline, "10 days ago UTC", 'Close_time')
     #data = pd.DataFrame(df['Close'],index=df.index)
     df['simple_rtn'] = df['Close'].pct_change()
     
@@ -227,7 +222,7 @@ if __name__ == "__main__":
     print("Profit Factor:", best_profit_factor)
     end_time = datetime.now()
     print('Duration: {}'.format(end_time - start_time))
-    df = get_stock(symbol = symbol, interval=kline, start=start,end=end, time_ref='Close_time')
+    data = get_stock_bot(symbol, kline, "9 days ago UTC", 'Close_time')
     print(df)
     
 
